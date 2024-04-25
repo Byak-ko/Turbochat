@@ -7,7 +7,6 @@ Rails.application.routes.draw do
       patch :update_participants
       post :add_participant
       delete :remove_participant
-      ##delete 'remove_participant/:user_id', action: :remove_participant, as: :remove_participant
     end
   end
   root 'pages#home'

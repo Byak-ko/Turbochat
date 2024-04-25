@@ -16,21 +16,30 @@ class User < ApplicationRecord
 
 
   def avatar_thumbnail
-    avatar.variant(resize_to_limit: [150, 150]).processed
+    if avatar.attached?
+      avatar.variant(resize_to_limit: [150, 150]).processed
+    else
+      'default_profile.jpg'
+    end
   end
 
   def chat_avatar
-    avatar.variant(resize_to_limit: [50, 50]).processed
+    if avatar.attached?
+      avatar.variant(resize_to_limit: [50, 50]).processed
+    else
+      'default_profile.jpg'
+    end
   end
 
   private 
 
   def add_default_avatar
-  
-    avatar.attach(
-      io: File.open(Rails.root.join('app', 'assets', 'images', 'default_profile.jpg')),
-      filename: 'default_profile.jpg',
-      content_type: 'image/jpg'
-    )
+    unless avatar.attached?
+      avatar.attach(
+        io: File.open(Rails.root.join('app', 'assets', 'images', 'default_profile.jpg')),
+        filename: 'default_profile.jpg',
+        content_type: 'image/jpg'
+      )
+    end
   end
 end
