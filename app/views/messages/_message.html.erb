@@ -1,0 +1,12 @@
+<div class="cont-<%=message.user.id%>">
+  <div class="message-box msg-<%= message.user.id %>">
+    <div class="d-flex align-items-center">
+      <%= image_tag(message.user.chat_avatar, class:'chat_pfp') %>
+      <div>
+        <h6 class="name"> <%= message.user.email %></h6>
+        <p class="time"><%= message.created_at.in_time_zone("Kyiv").strftime("%H:%M | %d.%m.%Y") %></p>
+      </div>
+    </div>
+    <%= message.body %>
+  </div>
+</div>

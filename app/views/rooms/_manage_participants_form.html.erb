@@ -1,0 +1,22 @@
+<%= turbo_frame_tag "manage_participants_form" do %>
+  <div class="card" style="background-color: #343a40 !important;">
+    <div class="card-header bg-primary text-white">
+      <h5 class="card-title mb-0">Manage Participants</h5>
+    </div>
+    <div class="card-body">
+      <%= form_with(model: @single_room, url: add_participant_room_path(@single_room), method: :post) do |f| %>
+        <div class="input-group mb-3">
+          <%= f.collection_select :user_id, User.all_except(@room.users), :id, :email, {}, { class: "form-select" } %>
+          <button type="submit" class="btn btn-primary ms-2">Add Participant</button>
+        </div>
+      <% end %>
+
+      <%= form_with(model: @single_room, url: remove_participant_room_path(@single_room), method: :delete) do |f| %>
+        <div class="input-group mb-3">
+          <%= f.collection_select :user_id, @single_room.participants.map(&:user), :id, :email, {}, { class: "form-select" } %>
+          <button type="submit" class="btn btn-danger ms-2">Remove Participant</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

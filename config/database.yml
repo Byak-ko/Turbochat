@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: 111111
+  host: localhost
+  port: 5433
+
+development:
+  <<: *default
+  database: turbochat_db
+
+test:
+  <<: *default
+  database: turbochat_test
+
+production:
+  <<: *default
+  database: turbochat_production

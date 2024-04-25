@@ -1,0 +1,6 @@
+ <h4 style="color: #fff;">Participants:</h4>
+    <ul style="list-style-type: none; padding: 0;">
+      <% @single_room.participants.each do |participant| %>
+        <li style="color: #fff;"><%= participant.user.email %></li>
+      <% end %>
+    </ul>

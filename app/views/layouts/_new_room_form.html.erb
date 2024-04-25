@@ -1,0 +1,16 @@
+<%= form_with(model: @room, remote: true, class: 'd-flex', data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }) do |f| %>
+  
+  <div class="d-flex flex-column" >
+  <div class="form-group">
+    <%= f.label :name, "Room name" %>
+    <%= f.text_field :name, class: 'form-control', autocomplete: 'off' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :user_ids, "Select users to invite" %>
+    <%= f.collection_select :user_ids, @users, :id, :email, {}, multiple: true, class: 'form-control' %>
+  </div>
+  
+  <%= f.submit data: { disable_with: false }, class: 'btn btn-success' %>
+  </div>
+<% end %>
