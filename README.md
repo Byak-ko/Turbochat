@@ -10,7 +10,7 @@ Features
 
 Installation
 
-- Clone the repository: git clone https://github.com/your_username/turbochat.git
+- Clone the repository: git clone https://github.com/Byak-ko/turbochat.git
 - Install all dependencies: bundle install
 - Run the database migrations: rails db:migrate
 - Start the server: rails server
